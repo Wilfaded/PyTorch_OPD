@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="eel.js"></script>
+</head>
+<body>
+<div align="center" class="calc">
+    <div class="calc_screen">
+        <p></p>
+    </div>
+    <div class="liner"><div class="line"></div> </div>
+    <div class="actions">
+        <div class="btn plus bg-gray1"> + </div>
+        <div class="btn minus bg-gray1"> – </div>
+        <div class="btn multy bg-gray1"> × </div>
+        <div class="btn division bg-gray1"> ÷ </div>
+    </div>
+        <div class="numbers">
+        <div class="btn one">1</div>
+        <div class="btn two">2</div>
+        <div class="btn three">3</div>
+        <div class="btn four">4</div>
+        <div class="btn five">5</div>
+        <div class="btn six">6</div>
+        <div class="btn seven">7</div>
+        <div class="btn eight">8</div>
+        <div class="btn nine">9</div>
+        <div class="btn zero">0</div>
+        </div>
+    <div class="additionally">
+        <div class="btn clear bg-gray">C</div>
+        <div class="btn delete bg-gray">⌫</div>
+    </div>
+    <div class="equalbox"><div class="btn equal bg-red">=</div></div>
+</div>
+<script type="text/javascript">
+let vale = '';
+let last = '';
+let act = [" + ", " – ", " × ", " ÷ ",];
+const out = document.querySelector('.calc_screen p');
+
+function clearAll(){
+vale = '';
+out.textContent = '';
+}
+
+window.onresize = function (){
+    if (window.outerWidth > 386 || window.outerHeight > 576){
+        window.resizeTo(386, 576);
+    }
+}
+
+function del(){
+let r = vale.slice(vale.length-3);
+if(vale === "Ошибка"){
+vale = "";
+}
+if(act.includes(r)){
+vale = vale.slice(0, vale.length-3);
+out.textContent = vale;
+return;
+}
+vale = vale.slice(0, vale.length-1);
+out.textContent = vale;
+}
+
+async function answer(){
+eel.recv_data(vale);
+vale = await eel.func()()
+vale = String(vale);
+out.textContent = vale;
+}
+
+document.querySelector('.clear').onclick = clearAll;
+document.querySelector('.equal').onclick = answer;
+document.querySelector('.delete').onclick = del;
+
+document.querySelector('.numbers').onclick = (event) => {
+if(!event.target.classList.contains('btn')) return;
+const key = event.target.textContent;
+if(vale === "Ошибка"){
+vale = "";
+}
+vale+=key;
+console.log(vale)
+out.textContent = vale;
+}
+
+document.querySelector('.actions').onclick = (event) => {
+if(!event.target.classList.contains('btn')) return;
+const key = event.target.textContent;
+last = vale.slice(vale.length-3);
+if(act.includes(last)){
+if(key === " – "){
+if(last === " × " || last === " ÷ "){
+if(vale === "Ошибка"){
+vale = "";
+}
+vale+=key;
+console.log(vale);
+out.textContent = vale;
+}
+return;
+}
+return;
+}
+if(vale === "Ошибка"){
+vale = "";
+}
+vale+=key;
+console.log(vale);
+out.textContent = vale;
+}
+</script>
+</body>
+</html>

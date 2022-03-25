@@ -1,0 +1,142 @@
+body{
+background: #EEEDED;
+padding: 0px;
+margin: 0px;
+}
+
+.calc{
+padding: 8px ;
+background: linear-gradient(130deg, #746B6B 32%, transparent);
+width: 354px auto;
+height: 521px;
+font-family: Arial;
+}
+
+.calc_screen{
+height: 185px;
+width: 360px;
+display: grid;
+justify-items: center;
+align-items: end;
+}
+
+.calc_screen p {
+height: 0px;
+font-size: 2rem;
+}
+
+.liner{
+height: 10px;
+width: 255px auto;
+display: grid;
+justify-items: center;
+}
+
+.line{
+height: 3px;
+width: 150px;
+background:linear-gradient(90deg,rgba(255, 255, 255, 0.2), rgba(187, 71, 71, 1), rgba(255, 255, 255, 0.2)) ;
+}
+
+.actions{
+height: 58px;
+display: grid;
+grid-template-columns: 88px 88px 88px 88px;
+grid-gap: 2px;
+justify-content: center;
+vertical-align: middle;
+}
+
+.numbers{
+height: 185px;
+display: grid;
+grid-template-columns: 88px 88px 88px;
+grid-gap: 1px;
+justify-content: center;
+vertical-align: middle;
+}
+
+.equalbox{
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 1px;
+justify-content: center;
+}
+
+.additionally{
+height: 31px;
+display: grid;
+grid-template-columns: 88px 88px 88px;
+grid-column-gap: 25px;
+justify-content: center;
+}
+
+
+.btn{
+width: 86px;
+height: 50px;
+background: #fff;
+border-radius: 8px;
+border:1px ridge rgba(239, 33, 33, 0.15);
+text-align: center;
+line-height: 50px;
+font-size: 1.5rem;
+font-weight: 600;
+cursor: pointer;
+user-select: none;
+}
+
+.btn.bg-gray{
+border-radius: 16px;
+border:1px ridge rgba(239, 33, 33, 0);
+background: #C1C1C1
+}
+
+.btn.bg-gray1{
+font-weight: 10;
+font-size: 2rem;
+border-radius: 16px;
+border:1px ridge rgba(239, 33, 33, 0);
+background: #C1C1C1
+}
+
+.equal{
+grid-column-start: 2;
+grid-column-end: 3;
+justify-self: center;
+}
+
+.zero{
+grid-column-start: 2;
+grid-column-end: 3;
+}
+
+.clear{
+border-radius: 6px;
+justify-self: end;
+grid-column-start: 1;
+grid-column-end: 2;
+}
+
+.delete{
+border-radius: 6px;
+justify-self: start;
+grid-column-start: 3;
+grid-column-end: 4;
+}
+
+.btn.bg-red{
+background: linear-gradient(140deg, #BB4747 40%, #E75C5C);
+border:1px ridge rgba(239, 33, 33, 0);
+border-radius: 16px;
+opacity: 0.7;
+}
+
+.btn:hover{
+filter: brightness(90%);
+}
+
+.btn:active{
+filter: brightness(85%);
+}
+
