@@ -11,7 +11,7 @@ def recv_data(calculation):
 
 
 @eel.expose
-def func():
+def func(a='1'):
     a = main.answer
     return a
 

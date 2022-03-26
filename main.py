@@ -14,12 +14,8 @@ def pp(exp):
 
    elems = exp.split()
    if len(elems) == 3:
-      try:
-         nums = [float(elems[0]), float(elems[2])]
-         operator = elems[1]
-      except Exception:
-         answer = "Ошибка"
-         return answer
+      nums = [float(elems[0]), float(elems[2])]
+      operator = elems[1]
    elif len(elems) == 4:
       try:
          nums = [float(elems[0]), float(elems[3])*(-1)]
@@ -32,12 +28,8 @@ def pp(exp):
             answer = "Ошибка"
             return answer
    elif len(elems) == 5:
-      try:
-         nums = [float(elems[1])*(-1), float(elems[4])*(-1)]
-         operator = elems[2]
-      except Exception:
-         answer = "Ошибка"
-         return answer
+      nums = [float(elems[1])*(-1), float(elems[4])*(-1)]
+      operator = elems[2]
    else:
       answer = "Ошибка"
       return answer

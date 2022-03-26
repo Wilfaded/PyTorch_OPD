@@ -9,7 +9,7 @@ with open("test.txt", "r") as f:
        elements = line.split()
        num_1 = float(elements[0])
        num_2 = float(elements[1])
-       answer = num_1*num_2
+       answer = num_1/num_2
 
        all_num_1.append(num_1)
        all_num_2.append(num_2)
@@ -23,13 +23,15 @@ x = np.transpose(x)
 y = np.array(all_ans)
 
 for i in range(len(x1)):
-    print(x[i,0],'*',x[i,1],'=',y[i])
+    print(x[i,0],'/',x[i,1],'=',y[i])
 
 x_train = torch.from_numpy(x).float()
 y_train = torch.from_numpy(y).float()
 
 model = torch.nn.Sequential(
-        torch.nn.Linear(2, 1024),
+        torch.nn.Linear(2, 2048),
+        torch.nn.ReLU(),
+        torch.nn.Linear(2048, 1024),
         torch.nn.ReLU(),
         torch.nn.Linear(1024, 512),
         torch.nn.ReLU(),
@@ -38,11 +40,11 @@ model = torch.nn.Sequential(
         torch.nn.Linear(256, 1)
         )
 
-criterion = torch.nn.MSELoss(reduction='sum')
+criterion = torch.nn.MSELoss(reduction='mean')
 
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 
-for epoch in range(25000):
+for epoch in range(5000):
     output = model(x_train)
     loss = criterion(output, torch.reshape(y_train, (len(x1), 1)))
     print('Epoch: ', epoch, 'Loss: ', loss.item())
@@ -52,4 +54,4 @@ for epoch in range(25000):
 
 print(output)
 
-torch.save(model,'torch_multiplying_model')
+torch.save(model,'torch_dividing_model')
